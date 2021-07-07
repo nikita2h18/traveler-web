@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {UserDto} from "../../dto/UserDto";
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {ActivatedRoute, Router} from "@angular/router";
+import {RegistrationService} from "../../service/registration.service";
+import {UserCredentials} from "../../dto/UserCredentials";
 
 @Component({
   selector: 'app-registration',
@@ -7,17 +10,40 @@ import {UserDto} from "../../dto/UserDto";
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit {
-  public value1!: string;
+  public form!: FormGroup;
 
-  public value2!: string;
-
-  public value3!: string;
-
-  public value4!: string;
-
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private registrationService: RegistrationService,
+  ) {
   }
 
+  ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      login: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+  }
+
+  onSubmit() {
+    console.log('submit');
+    if (this.form.invalid) {
+      return;
+    }
+    const userCredentials = new UserCredentials(
+      this.form.controls.login.value,
+      this.form.controls.password.value
+    )
+
+    this.registrationService
+      .register(userCredentials)
+      .subscribe(
+        (): void => {
+          this.router.navigateByUrl('registration');
+        },
+        error => console.log(error)
+      );
+  }
 }

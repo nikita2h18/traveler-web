@@ -1,2 +1,16 @@
-<h5>Basic</h5>
-<p-password [(ngModel)]="value1"></p-password>
+<div class="registration-form">
+  <h1 class="registration-form__header">Registration</h1>
+  <form class="registration-form__input p-fluid"
+        [formGroup]="form">
+    <div class="p-field input">
+      <label for="login">Login</label>
+      <input id="login" type="text" pInputText formControlName="login">
+    </div>
+    <div class="p-field input">
+      <label for="password">Password</label>
+      <p-password id="password" formControlName="password"></p-password>
+    </div>
+    <p-button label="SUBMIT" (click)="onSubmit()"></p-button>
+  </form>
+</div>
+
