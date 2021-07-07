@@ -3,12 +3,10 @@
   <form class="registration-form__input p-fluid"
         [formGroup]="form">
     <div class="p-field input">
-      <label for="login">Login</label>
-      <input id="login" type="text" pInputText formControlName="login">
+      <input id="login" type="text" placeholder="login" pInputText formControlName="login">
     </div>
     <div class="p-field input">
-      <label for="password">Password</label>
-      <p-password id="password" formControlName="password"></p-password>
+      <p-password id="password" placeholder="password" formControlName="password"></p-password>
     </div>
     <p-button label="SUBMIT" (click)="onSubmit()"></p-button>
   </form>

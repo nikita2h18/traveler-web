@@ -8,13 +8,13 @@ import {User} from "../dto/User";
 @Injectable({
   providedIn: 'root'
 })
-export class RegistrationService {
+export class AuthService {
 
   constructor(
     private http: HttpClient,
   ) { }
 
-  register(userCredentials: UserCredentials): Observable<User> {
-    return this.http.post<User>(API_URL + 'registration', userCredentials);
+  auth(userCredentials: UserCredentials): Observable<string> {
+    return this.http.post<string>(API_URL + 'auth/login', userCredentials);
   }
 }

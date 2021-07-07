@@ -1,0 +1,14 @@
+<div class="auth-form">
+  <h1 class="auth-form__header">Authentication</h1>
+  <form class="auth-form__input p-fluid"
+        [formGroup]="form">
+    <div class="p-field input">
+      <input id="login" type="text" placeholder="login" pInputText formControlName="login">
+    </div>
+    <div class="p-field input">
+      <p-password id="password" placeholder="password" formControlName="password" [feedback]="false"></p-password>
+    </div>
+    <p-button label="Login" (click)="onSubmit()"></p-button>
+  </form>
+</div>
+

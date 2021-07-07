@@ -28,7 +28,6 @@ export class RegistrationComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('submit');
     if (this.form.invalid) {
       return;
     }
@@ -41,7 +40,7 @@ export class RegistrationComponent implements OnInit {
       .register(userCredentials)
       .subscribe(
         (): void => {
-          this.router.navigateByUrl('registration');
+          this.router.navigateByUrl('auth/login');
         },
         error => console.log(error)
       );

@@ -1,0 +1,48 @@
+import { Component, OnInit } from '@angular/core';
+import {UserCredentials} from "../../dto/UserCredentials";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {ActivatedRoute, Router} from "@angular/router";
+import {AuthService} from "../../service/auth.service";
+import {TokenProviderService} from "../../service/token-provider.service";
+
+@Component({
+  selector: 'app-auth',
+  templateUrl: './auth.component.html',
+  styleUrls: ['./auth.component.scss']
+})
+export class AuthComponent implements OnInit {
+  public form!: FormGroup;
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private authService: AuthService,
+    private tokenProviderService: TokenProviderService,
+  ) {
+  }
+
+  ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      login: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+  }
+
+  onSubmit() {
+    if (this.form.invalid) {
+      return;
+    }
+    const userCredentials = new UserCredentials(
+      this.form.controls.login.value,
+      this.form.controls.password.value
+    )
+
+    this.authService.auth(userCredentials).subscribe(
+      token => {
+        this.tokenProviderService.setToken(token);
+        this.router.navigateByUrl('main');
+      }
+    );
+  }
+}
