@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {RegistrationService} from "../../service/registration.service";
@@ -7,7 +7,8 @@ import {UserCredentials} from "../../dto/UserCredentials";
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.scss']
+  styleUrls: ['./registration.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class RegistrationComponent implements OnInit {
   public form!: FormGroup;
@@ -40,7 +41,7 @@ export class RegistrationComponent implements OnInit {
       .register(userCredentials)
       .subscribe(
         (): void => {
-          this.router.navigateByUrl('auth/login');
+          this.router.navigateByUrl('main/profile/create');
         },
         error => console.log(error)
       );

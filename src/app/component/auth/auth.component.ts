@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {UserCredentials} from "../../dto/UserCredentials";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -8,7 +8,8 @@ import {TokenProviderService} from "../../service/token-provider.service";
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
-  styleUrls: ['./auth.component.scss']
+  styleUrls: ['./auth.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AuthComponent implements OnInit {
   public form!: FormGroup;
@@ -41,7 +42,7 @@ export class AuthComponent implements OnInit {
     this.authService.auth(userCredentials).subscribe(
       token => {
         this.tokenProviderService.setToken(token);
-        this.router.navigateByUrl('main');
+        this.router.navigateByUrl('main/registration');
       }
     );
   }

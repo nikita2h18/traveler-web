@@ -7,11 +7,20 @@
   &__header {
     display: flex;
     justify-content: center;
-    font-family: "Paper Cuts";
+    font-family: FjallaOne-Regular, sans-serif;
   }
 
   &__input {
     margin: 0 35px;
+  }
+
+  &__link {
+    font-family: FjallaOne-Regular, sans-serif;
+    margin-top: 10px;
+  }
+
+  &__button {
+    font-family: FjallaOne-Regular, sans-serif;
   }
 }
 

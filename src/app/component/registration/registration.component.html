@@ -1,14 +1,21 @@
-<div class="registration-form">
-  <h1 class="registration-form__header">Registration</h1>
-  <form class="registration-form__input p-fluid"
-        [formGroup]="form">
-    <div class="p-field input">
-      <input id="login" type="text" placeholder="login" pInputText formControlName="login">
-    </div>
-    <div class="p-field input">
-      <p-password id="password" placeholder="password" formControlName="password"></p-password>
-    </div>
-    <p-button label="SUBMIT" (click)="onSubmit()"></p-button>
-  </form>
+<div class="flex-center">
+  <div class="form">
+    <h1 class="form__header">Registration</h1>
+    <form class="form__input p-fluid"
+          [formGroup]="form">
+      <div class="p-field input">
+        <input id="login" type="text" placeholder="login" pInputText formControlName="login">
+      </div>
+      <div class="p-field input">
+        <p-password id="password" placeholder="password" formControlName="password"></p-password>
+      </div>
+      <p-button label="Next" (click)="onSubmit()"></p-button>
+      <div class="form__link">
+        Have already registered?
+        <a [routerLink]="'/auth'">Login</a>
+        to Traveler now!
+      </div>
+    </form>
+  </div>
 </div>
 

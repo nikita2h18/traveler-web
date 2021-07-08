@@ -2,11 +2,39 @@
 @import "~primeng/resources/primeng.min.css";
 @import "~primeicons/primeicons.css";
 
-body {
-  background-color: rgba(var(--b3f,250,250,250),1);
+@font-face {
+  font-family: FjallaOne-Regular;
+  src: local(FjallaOne-Regular), url("assets/fonts/FjallaOne-Regular.ttf") format("truetype");
 }
 
-@font-face {
-  font-family: Paper Cuts;
-  src: local(Paper Cuts), url("assets/fonts/Paper Cuts.ttf") format("truetype");
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  max-width: 1170px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.form {
+  width: 340px;
+  height: 310px;
+  background-color: white;
+  padding: 10px 0;
+  font-family: FjallaOne-Regular, sans-serif;
+
+  &__header {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__input {
+    margin: 0 35px;
+  }
+
+  &__link {
+    margin-top: 10px;
+  }
 }

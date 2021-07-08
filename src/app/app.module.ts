@@ -14,14 +14,21 @@ import {HttpClientModule} from "@angular/common/http";
 import {AuthComponent} from './component/auth/auth.component';
 import {NgxsReduxDevtoolsPluginModule} from "@ngxs/devtools-plugin";
 import {NgxsLoggerPluginModule} from "@ngxs/logger-plugin";
-import { MainComponent } from './component/main/main.component';
+import {MainComponent} from './component/main/main.component';
+import {CreateProfileComponent} from './component/create-profile/create-profile.component';
+import {StepsModule} from 'primeng/steps';
+import {MenuModule} from "primeng/menu";
+import {ToastModule} from "primeng/toast";
+import {MessageService} from "primeng/api";
+import {CalendarModule} from 'primeng/calendar';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistrationComponent,
     AuthComponent,
-    MainComponent
+    MainComponent,
+    CreateProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -37,8 +44,12 @@ import { MainComponent } from './component/main/main.component';
     NgxsModule.forRoot([]),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot(),
+    StepsModule,
+    MenuModule,
+    ToastModule,
+    CalendarModule
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

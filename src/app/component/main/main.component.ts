@@ -1,15 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {MenuItem, MessageService} from "primeng/api";
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+  styleUrls: ['./main.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class MainComponent implements OnInit {
 
-  constructor() { }
+  public items!: MenuItem[];
 
-  ngOnInit(): void {
+  constructor() {
   }
 
+  ngOnInit() {
+    this.items = [
+      {
+        label: 'Personal',
+        routerLink: 'registration'
+      },
+      {
+        label: 'Profile Info',
+        routerLink: 'profile/create'
+      }
+    ];
+  }
 }

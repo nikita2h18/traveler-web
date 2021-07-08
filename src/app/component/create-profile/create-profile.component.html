@@ -1,0 +1,19 @@
+<div class="flex-center">
+  <div class="form">
+    <h1 class="form__header">Profile Info</h1>
+    <form class="form__input p-fluid"
+          [formGroup]="form">
+      <div class="p-field input">
+        <input id="firstname" type="text" placeholder="name" pInputText formControlName="name">
+      </div>
+      <div class="p-field input">
+        <input id="lastname" type="text" placeholder="lastname" pInputText formControlName="lastname">
+      </div>
+      <div class="input">
+        <p-calendar placeholder="birthday" formControlName="birthday"></p-calendar>
+      </div>
+      <p-button label="Next" (click)="onSubmit()"></p-button>
+    </form>
+  </div>
+</div>
+
