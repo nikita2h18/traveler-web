@@ -17,6 +17,10 @@ export class ProfileService {
   }
 
   create(profile: Profile) {
-    return this.http.post<void>(API_URL + 'registration', profile);
+    return this.http.post<void>(API_URL + 'profile/create', profile, {
+      headers: {
+        token: localStorage.getItem('token') as string
+      }
+    });
   }
 }

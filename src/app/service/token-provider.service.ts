@@ -10,8 +10,8 @@ export class TokenProviderService {
   private tokenSubject = new BehaviorSubject<Token>(new Token());
   public token = this.tokenSubject.asObservable();
 
-  setToken(token: string) {
-    this.tokenSubject.next(new Token(token));
-    localStorage.setItem(LOCALSTORAGE_TOKEN_NAME, token);
+  setToken(token: Token) {
+    this.tokenSubject.next(token);
+    localStorage.setItem(LOCALSTORAGE_TOKEN_NAME, token.token as string);
   }
 }

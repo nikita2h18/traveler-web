@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpResponse} from "@angular/common/http";
 import {UserCredentials} from "../dto/UserCredentials";
 import {Observable} from "rxjs";
 import {API_URL} from "../globals";
 import {User} from "../dto/User";
+import {Token} from "../dto/Token";
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class AuthService {
     private http: HttpClient,
   ) { }
 
-  auth(userCredentials: UserCredentials): Observable<string> {
-    return this.http.post<string>(API_URL + 'auth/login', userCredentials);
+  auth(userCredentials: UserCredentials): Observable<Token> {
+    return this.http.post<Token>(API_URL + 'auth/login', userCredentials);
   }
 }
