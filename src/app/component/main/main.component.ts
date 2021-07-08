@@ -17,10 +17,6 @@ export class MainComponent implements OnInit {
   ngOnInit() {
     this.items = [
       {
-        label: 'Personal',
-        routerLink: 'registration'
-      },
-      {
         label: 'Profile Info',
         routerLink: 'profile/create'
       }

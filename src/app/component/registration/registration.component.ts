@@ -41,7 +41,7 @@ export class RegistrationComponent implements OnInit {
       .register(userCredentials)
       .subscribe(
         (): void => {
-          this.router.navigateByUrl('main/profile/create');
+          this.router.navigateByUrl('/main');
         },
         error => console.log(error)
       );

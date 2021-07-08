@@ -7,10 +7,6 @@ import {CreateProfileComponent} from "./component/create-profile/create-profile.
 
 const registrationRoutes = [
   {
-    path: 'registration',
-    component: RegistrationComponent,
-  },
-  {
     path: 'profile/create',
     component: CreateProfileComponent
   }
@@ -25,6 +21,10 @@ const routes: Routes = [
   {
     path: 'auth',
     component: AuthComponent,
+  },
+  {
+    path: 'registration',
+    component: RegistrationComponent,
   },
   {
     path: 'main',

@@ -2,6 +2,9 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MessageService} from "primeng/api";
+import {TokenProviderService} from "../../service/token-provider.service";
+import {ProfileService} from "../../service/profile.service";
+import {Profile} from "../../dto/Profile";
 
 @Component({
   selector: 'app-create-profile',
@@ -16,6 +19,7 @@ export class CreateProfileComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
+    private profileService: ProfileService,
     public messageService: MessageService
   ) { }
 
@@ -28,10 +32,23 @@ export class CreateProfileComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.form.invalid) {
+      return;
+    }
+
     this.messageService.add({
       severity:'success', summary:'Order submitted',
       detail: 'Dear, ' + this.form.controls.name.value + ' ' +
         this.form.controls.lastname.value + ' your order completed.'
     });
+
+    const profile = new Profile(
+      this.form.controls.name.value,
+      this.form.controls.lastname.value,
+      this.form.controls.birthday.value
+      )
+    this.profileService.create(profile).subscribe(
+      () => this.router.navigateByUrl('main')
+    )
   }
 }
