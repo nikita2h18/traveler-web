@@ -2,7 +2,6 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MessageService} from "primeng/api";
-import {TokenProviderService} from "../../service/token-provider.service";
 import {ProfileService} from "../../service/profile.service";
 import {Profile} from "../../dto/Profile";
 

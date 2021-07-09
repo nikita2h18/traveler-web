@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {MenuItem, MessageService} from "primeng/api";
+import {MenuItem} from "primeng/api";
 
 @Component({
   selector: 'app-main',
