@@ -21,6 +21,7 @@ import {MenuModule} from "primeng/menu";
 import {ToastModule} from "primeng/toast";
 import {MessageService} from "primeng/api";
 import {CalendarModule} from 'primeng/calendar';
+import {TravelModule} from "./module/travel/travel.module";
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import {CalendarModule} from 'primeng/calendar';
     StepsModule,
     MenuModule,
     ToastModule,
-    CalendarModule
+    CalendarModule,
+    TravelModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]
