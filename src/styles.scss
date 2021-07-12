@@ -12,10 +12,17 @@
   justify-content: center;
 }
 
+.flex-center-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .container {
   max-width: 1170px;
   width: 100%;
   margin: 0 auto;
+  height: 100%
 }
 
 .form {
@@ -37,4 +44,9 @@
   &__link {
     margin-top: 10px;
   }
+}
+
+.text-header {
+  text-align: center;
+  font-family: FjallaOne-Regular, sans-serif;
 }

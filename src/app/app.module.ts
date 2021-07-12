@@ -22,6 +22,7 @@ import {ToastModule} from "primeng/toast";
 import {MessageService} from "primeng/api";
 import {CalendarModule} from 'primeng/calendar';
 import {TravelModule} from "./module/travel/travel.module";
+import { PreviewComponent } from './component/preview/preview.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {TravelModule} from "./module/travel/travel.module";
     RegistrationComponent,
     AuthComponent,
     MainComponent,
-    CreateProfileComponent
+    CreateProfileComponent,
+    PreviewComponent
   ],
   imports: [
     BrowserModule,

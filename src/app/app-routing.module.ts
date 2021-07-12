@@ -1,23 +1,12 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {RegistrationComponent} from "./component/registration/registration.component";
 import {AuthComponent} from "./component/auth/auth.component";
 import {MainComponent} from "./component/main/main.component";
 import {CreateProfileComponent} from "./component/create-profile/create-profile.component";
+import {PreviewComponent} from "./component/preview/preview.component";
 
-const registrationRoutes = [
-  {
-    path: 'profile/create',
-    component: CreateProfileComponent
-  }
-]
-
-const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'auth',
-    pathMatch: 'full'
-  },
+const authRoutes = [
   {
     path: 'auth',
     component: AuthComponent,
@@ -26,10 +15,22 @@ const routes: Routes = [
     path: 'registration',
     component: RegistrationComponent,
   },
+]
+
+const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'preview/auth',
+    pathMatch: 'full'
+  },
   {
     path: 'main',
     component: MainComponent,
-    children: registrationRoutes
+  },
+  {
+    path: 'preview',
+    component: PreviewComponent,
+    children: authRoutes,
   },
 ];
 
