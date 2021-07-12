@@ -23,6 +23,7 @@ import {MessageService} from "primeng/api";
 import {CalendarModule} from 'primeng/calendar';
 import {TravelModule} from "./module/travel/travel.module";
 import { PreviewComponent } from './component/preview/preview.component';
+import { ToolbarComponent } from './component/toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { PreviewComponent } from './component/preview/preview.component';
     AuthComponent,
     MainComponent,
     CreateProfileComponent,
-    PreviewComponent
+    PreviewComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,
