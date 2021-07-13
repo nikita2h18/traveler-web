@@ -24,6 +24,7 @@ import {CalendarModule} from 'primeng/calendar';
 import {TravelModule} from "./module/travel/travel.module";
 import { PreviewComponent } from './component/preview/preview.component';
 import { ToolbarComponent } from './component/toolbar/toolbar.component';
+import { TravelListComponent } from './module/travel/travel-list/travel-list.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ToolbarComponent } from './component/toolbar/toolbar.component';
     MainComponent,
     CreateProfileComponent,
     PreviewComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    TravelListComponent
   ],
   imports: [
     BrowserModule,

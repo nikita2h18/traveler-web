@@ -5,6 +5,7 @@ import {AuthComponent} from "./component/auth/auth.component";
 import {MainComponent} from "./component/main/main.component";
 import {CreateProfileComponent} from "./component/create-profile/create-profile.component";
 import {PreviewComponent} from "./component/preview/preview.component";
+import {TravelViewComponent} from "./module/travel/travel-view/travel-view.component";
 
 const authRoutes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
     path: 'preview',
     component: PreviewComponent,
     children: authRoutes,
+  },
+  {
+    path: 'view',
+    component: TravelViewComponent,
   },
 ];
 

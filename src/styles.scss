@@ -7,6 +7,11 @@
   src: local(FjallaOne-Regular), url("assets/fonts/FjallaOne-Regular.ttf") format("truetype");
 }
 
+body {
+  margin: 0;
+  background-color: rgba(59,59,59,0.09);
+}
+
 .flex-center {
   display: flex;
   justify-content: center;
@@ -18,11 +23,17 @@
   align-items: center;
 }
 
+.flex-space_between {
+  display: flex;
+  justify-content: space-between;
+}
+
 .container {
   max-width: 1170px;
   width: 100%;
   margin: 0 auto;
-  height: 100%
+  height: 100%;
+  background-color: white;
 }
 
 .form {
