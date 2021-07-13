@@ -25,6 +25,7 @@ import {TravelModule} from "./module/travel/travel.module";
 import { PreviewComponent } from './component/preview/preview.component';
 import { ToolbarComponent } from './component/toolbar/toolbar.component';
 import { TravelListComponent } from './module/travel/travel-list/travel-list.component';
+import {CardModule} from "primeng/card";
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { TravelListComponent } from './module/travel/travel-list/travel-list.com
     MenuModule,
     ToastModule,
     CalendarModule,
-    TravelModule
+    TravelModule,
+    CardModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

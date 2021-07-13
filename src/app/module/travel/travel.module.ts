@@ -11,9 +11,12 @@ import {CardModule} from "primeng/card";
     TravelCreateComponent,
     TravelViewComponent
   ],
-    imports: [
-        CommonModule,
-        CardModule
-    ]
+  exports: [
+    TravelViewComponent
+  ],
+  imports: [
+    CommonModule,
+    CardModule
+  ]
 })
 export class TravelModule { }

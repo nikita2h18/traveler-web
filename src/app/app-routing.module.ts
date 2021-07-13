@@ -34,7 +34,7 @@ const routes: Routes = [
     children: authRoutes,
   },
   {
-    path: 'view',
+    path: 'view/:id',
     component: TravelViewComponent,
   },
 ];

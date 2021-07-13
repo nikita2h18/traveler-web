@@ -13,7 +13,7 @@ export class TravelService {
   ) { }
 
   public getAll() {
-    this.http.get<Travel[]>(API_URL + 'campaign/all');
+    return this.http.get<Travel[]>(API_URL + 'travel/view');
   }
 
   public getUserTravels(token: string) {
@@ -25,6 +25,10 @@ export class TravelService {
   }
 
   public getTravel(id: bigint) {
-    return this.http.get<Travel>(API_URL + 'campaign/' + id);
+    return this.http.get<Travel>(API_URL + 'travel/view/' + id, {
+      headers: {
+        token: localStorage.getItem('token') as string,
+      }
+    });
   }
 }

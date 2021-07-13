@@ -1,1 +1,5 @@
-<p>travel-list works!</p>
+<div class="onload" *ngIf="travels">
+  <div *ngFor="let travel of travels">
+    <app-travel-view [travel] = travel></app-travel-view>
+  </div>
+</div>
