@@ -6,6 +6,8 @@ import {CardModule} from "primeng/card";
 import {CardUserComponent} from "../../component/card-user/card-user.component";
 import {InputTextareaModule} from "primeng/inputtextarea";
 import {InputTextModule} from "primeng/inputtext";
+import {FormsModule} from "@angular/forms";
+import {ButtonModule} from "primeng/button";
 
 
 @NgModule({
@@ -23,6 +25,8 @@ import {InputTextModule} from "primeng/inputtext";
     CardModule,
     InputTextareaModule,
     InputTextModule,
+    FormsModule,
+    ButtonModule,
   ]
 })
 export class TravelModule { }

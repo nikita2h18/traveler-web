@@ -31,4 +31,12 @@ export class TravelService {
       }
     });
   }
+
+  public addTravel(travelDto: Travel) {
+    return this.http.post(API_URL + 'travel/add', travelDto, {
+      headers: {
+        token: localStorage.getItem('token') as string,
+      }
+    })
+  }
 }
