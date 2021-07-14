@@ -1,5 +1,26 @@
-<div class="onload" *ngIf="travels">
-  <div *ngFor="let travel of travels">
-    <app-travel-view [travel] = travel></app-travel-view>
+<div class="travel-list" *ngIf="travels">
+  <div class="travel-list__component"
+       *ngFor="let travel of travels"
+       [routerLink]="'/main/travel/view/' + travel.id">
+    <p-card [header]="travel.pointTo" [style]="style" styleClass="p-card-shadow">
+      <ng-template pTemplate="header">
+        <app-card-user [travelId]="travel.id"></app-card-user>
+        <img alt="Card" src="../../../../assets/0-tunis.jpg" height="220"/></ng-template>
+      <p>{{travel.description}}</p>
+      <ng-template pTemplate="footer">
+        <div class="card__icons">
+          <div class="card__icon-section">
+            <i class="pi pi-heart card__icon"></i>
+            <p> Like</p>
+          </div>
+          <div class="card__icon-section">
+            <i class="pi pi-comment card__icon"></i>
+            <p> Comment</p>
+          </div>
+        </div>
+      </ng-template>
+    </p-card>
+
   </div>
+
 </div>

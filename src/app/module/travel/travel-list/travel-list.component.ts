@@ -10,6 +10,9 @@ import {TravelService} from "../../../service/travel.service";
 })
 export class TravelListComponent implements OnInit {
   public travels: Travel[] = [];
+  public style = {
+    width: '360px',
+  }
 
   constructor(
     private travelService: TravelService,

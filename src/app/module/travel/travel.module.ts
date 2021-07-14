@@ -4,6 +4,8 @@ import {TravelCreateComponent} from './travel-create/travel-create.component';
 import {TravelViewComponent} from './travel-view/travel-view.component';
 import {CardModule} from "primeng/card";
 import {CardUserComponent} from "../../component/card-user/card-user.component";
+import {InputTextareaModule} from "primeng/inputtextarea";
+import {InputTextModule} from "primeng/inputtext";
 
 
 @NgModule({
@@ -16,9 +18,11 @@ import {CardUserComponent} from "../../component/card-user/card-user.component";
     TravelViewComponent,
     CardUserComponent
   ],
-    imports: [
-        CommonModule,
-        CardModule,
-    ]
+  imports: [
+    CommonModule,
+    CardModule,
+    InputTextareaModule,
+    InputTextModule,
+  ]
 })
 export class TravelModule { }

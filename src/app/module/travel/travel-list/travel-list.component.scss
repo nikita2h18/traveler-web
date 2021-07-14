@@ -1,0 +1,34 @@
+.travel-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  &__component {
+    margin-right: 30px;
+    margin-bottom: 15px;
+  }
+
+  &__component:hover {
+    cursor: pointer;
+  }
+}
+
+.card {
+  width: 500px;
+}
+
+.card__icons {
+  display: flex;
+}
+
+.card__icon-section {
+  display: flex;
+  margin-right: 10px;
+}
+
+.card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  margin-right: 10px;
+}

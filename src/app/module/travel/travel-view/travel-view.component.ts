@@ -11,6 +11,9 @@ import {switchMap} from "rxjs/operators";
 })
 export class TravelViewComponent implements OnInit {
   @Input() public travel!: Travel;
+  public style = {
+    width: '360px',
+  }
 
   constructor(
     private travelService: TravelService,
