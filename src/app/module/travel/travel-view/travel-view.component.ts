@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {TravelService} from "../../../service/travel.service";
 import {Travel} from "../../../dto/Travel";
+import {switchMap} from "rxjs/operators";
 
 @Component({
   selector: 'app-travel-view',
@@ -19,19 +20,18 @@ export class TravelViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe(
-      params => {
-        this.travelService.getTravel(params['id'])
-          .subscribe((travel: Travel) => {
-            this.travel = new Travel(
-              travel.id,
-              travel.description,
-              travel.pointFrom,
-              travel.pointTo
-            )
-          });
-      }
-    )
+    if (!this.travel) {
+      this.route.params.pipe(
+        switchMap(params => this.travelService.getTravel(params['id']))
+      ).subscribe((travel: Travel) => {
+        this.travel = new Travel(
+          travel.id,
+          travel.description,
+          travel.pointFrom,
+          travel.pointTo
+        )
+      });
+    }
   }
 
 }

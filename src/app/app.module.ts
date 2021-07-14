@@ -28,39 +28,41 @@ import { TravelListComponent } from './module/travel/travel-list/travel-list.com
 import {CardModule} from "primeng/card";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    RegistrationComponent,
-    AuthComponent,
-    MainComponent,
-    CreateProfileComponent,
-    PreviewComponent,
-    ToolbarComponent,
-    TravelListComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    PasswordModule,
-    DividerModule,
-    FormsModule,
-    ReactiveFormsModule,
-    InputTextModule,
-    ButtonModule,
-    HttpClientModule,
-    NgxsModule.forRoot([]),
-    NgxsReduxDevtoolsPluginModule.forRoot(),
-    NgxsLoggerPluginModule.forRoot(),
-    StepsModule,
-    MenuModule,
-    ToastModule,
-    CalendarModule,
-    TravelModule,
-    CardModule
-  ],
-  providers: [MessageService],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        RegistrationComponent,
+        AuthComponent,
+        MainComponent,
+        CreateProfileComponent,
+        PreviewComponent,
+        ToolbarComponent,
+        TravelListComponent,
+    ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        PasswordModule,
+        DividerModule,
+        FormsModule,
+        ReactiveFormsModule,
+        InputTextModule,
+        ButtonModule,
+        HttpClientModule,
+        NgxsModule.forRoot([]),
+        NgxsReduxDevtoolsPluginModule.forRoot(),
+        NgxsLoggerPluginModule.forRoot(),
+        StepsModule,
+        MenuModule,
+        ToastModule,
+        CalendarModule,
+        TravelModule,
+        CardModule
+    ],
+    providers: [MessageService],
+    exports: [
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
 }

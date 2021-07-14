@@ -1,0 +1,16 @@
+.profile-context {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+
+  &__login {
+    font-family: "Paper Cuts", serif;
+  }
+}
+
+.avatar {
+  border-radius: 50%;
+  width: 50px;
+  height: 100%;
+  margin-right: 10px;
+}
