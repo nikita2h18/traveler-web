@@ -1,0 +1,11 @@
+<div class="user">
+  <div class="user__info">
+    <img class="avatar" src="../../../assets/avatar.jpg" alt="Avatar"/>
+    <div class="user__login" *ngIf="!!user">{{user.login}}</div>
+  </div>
+
+  <i class="pi pi-pencil user__edit" (click)="isEdit = !isEdit"></i>
+</div>
+<div *ngIf="isEdit">
+  <app-create-profile></app-create-profile>
+</div>
