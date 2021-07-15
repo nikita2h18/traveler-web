@@ -2,7 +2,8 @@
   background: white;
   width: 100%;
   padding: 30px;
-  height: 50vh;
+  min-height: 450px;
+  height: auto;
 
   &__item {
     margin: 15px 0;

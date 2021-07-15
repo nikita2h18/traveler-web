@@ -13,7 +13,15 @@ export class UserService {
     private http: HttpClient
   ) { }
 
-  getBuTravel(travelId: number) {
+  getByToken() {
+    return this.http.get<User>(API_URL + 'user/get', {
+      headers: {
+        token: localStorage.getItem('token') as string
+      }
+    })
+  }
+
+  getByTravel(travelId: number) {
     return this.http.get<User>(API_URL + 'user/travel/' + travelId);
   }
 }

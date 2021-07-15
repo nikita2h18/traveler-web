@@ -26,6 +26,7 @@ import { PreviewComponent } from './component/preview/preview.component';
 import { ToolbarComponent } from './component/toolbar/toolbar.component';
 import { TravelListComponent } from './module/travel/travel-list/travel-list.component';
 import {CardModule} from "primeng/card";
+import { UserComponent } from './component/user/user.component';
 
 @NgModule({
     declarations: [
@@ -37,6 +38,7 @@ import {CardModule} from "primeng/card";
         PreviewComponent,
         ToolbarComponent,
         TravelListComponent,
+        UserComponent,
     ],
     imports: [
         BrowserModule,

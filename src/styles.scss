@@ -1,6 +1,8 @@
 @import "~primeng/resources/themes/saga-blue/theme.css";
 @import "~primeng/resources/primeng.min.css";
 @import "~primeicons/primeicons.css";
+@import "~quill/dist/quill.core.css";
+@import "~quill/dist/quill.snow.css";
 
 @font-face {
   font-family: FjallaOne-Regular;
@@ -36,7 +38,7 @@ body {
 }
 
 .form {
-  width: 340px;
+  min-width: 340px;
   height: 310px;
   background-color: white;
   padding: 10px 0;

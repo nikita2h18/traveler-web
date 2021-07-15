@@ -1,5 +1,5 @@
-<div class="flex-center">
-  <div class="form">
+<div class="profile flex-center">
+  <div class="form profile">
     <h1 class="form__header">Profile Info</h1>
     <form class="form__input p-fluid"
           [formGroup]="form">
@@ -12,7 +12,7 @@
       <div class="input">
         <p-calendar placeholder="birthday" formControlName="birthday"></p-calendar>
       </div>
-      <p-button label="Next" (click)="onSubmit()"></p-button>
+      <p-button label="Submit" (click)="onSubmit()"></p-button>
     </form>
   </div>
 </div>

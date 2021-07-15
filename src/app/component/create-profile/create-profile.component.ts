@@ -47,7 +47,7 @@ export class CreateProfileComponent implements OnInit {
       this.form.controls.birthday.value
       )
     this.profileService.create(profile).subscribe(
-      () => this.router.navigateByUrl('main')
+      () => this.router.navigateByUrl('main/travels')
     )
   }
 }

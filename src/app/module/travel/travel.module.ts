@@ -8,6 +8,7 @@ import {InputTextareaModule} from "primeng/inputtextarea";
 import {InputTextModule} from "primeng/inputtext";
 import {FormsModule} from "@angular/forms";
 import {ButtonModule} from "primeng/button";
+import {EditorModule} from "primeng/editor";
 
 
 @NgModule({
@@ -20,13 +21,14 @@ import {ButtonModule} from "primeng/button";
     TravelViewComponent,
     CardUserComponent
   ],
-  imports: [
-    CommonModule,
-    CardModule,
-    InputTextareaModule,
-    InputTextModule,
-    FormsModule,
-    ButtonModule,
-  ]
+    imports: [
+        CommonModule,
+        CardModule,
+        InputTextareaModule,
+        InputTextModule,
+        FormsModule,
+        ButtonModule,
+        EditorModule,
+    ]
 })
 export class TravelModule { }

@@ -6,7 +6,7 @@
       <ng-template pTemplate="header">
         <app-card-user [travelId]="travel.id"></app-card-user>
         <img alt="Card" src="../../../../assets/0-tunis.jpg" height="220"/></ng-template>
-      <p>{{travel.description}}</p>
+      <div [innerHTML]="travel.description"></div>
       <ng-template pTemplate="footer">
         <div class="card__icons">
           <div class="card__icon-section">

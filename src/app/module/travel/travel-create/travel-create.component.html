@@ -1,13 +1,10 @@
 <form class="form">
   <div class="p-fluid p-formgrid p-grid">
     <div class="p-field p-col-12 form__item">
-      <label for="description">Describe your travel</label>
-      <textarea id="description"
-                type="text"
-                rows="4"
-                [(ngModel)]="travel.description"
+      <label>Description</label>
+      <p-editor [(ngModel)]="travel.description"
                 [ngModelOptions]="{standalone: true}"
-                pInputTextarea></textarea>
+                [style]="{'height':'320px'}"></p-editor>
     </div>
     <div class="p-field p-col-12 p-md-6 form__item">
       <label for="pointFrom">From</label>
