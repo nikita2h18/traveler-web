@@ -27,6 +27,7 @@ import { ToolbarComponent } from './component/toolbar/toolbar.component';
 import { TravelListComponent } from './module/travel/travel-list/travel-list.component';
 import {CardModule} from "primeng/card";
 import { UserComponent } from './component/user/user.component';
+import {RippleModule} from "primeng/ripple";
 
 @NgModule({
     declarations: [
@@ -59,11 +60,11 @@ import { UserComponent } from './component/user/user.component';
         ToastModule,
         CalendarModule,
         TravelModule,
-        CardModule
+        CardModule,
+        RippleModule
     ],
     providers: [MessageService],
-    exports: [
-    ],
+  exports: [],
     bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,0 +1,13 @@
+<div *ngIf="comments">
+  <div *ngFor="let comment of comments">
+    {{comment.message}}
+  </div>
+</div>
+<input type="text" pInputText [(ngModel)]="writeComment.message">
+<button pButton
+        pRipple
+        type="button"
+        icon="pi pi-check"
+        class="p-button-rounded p-button-text"
+        (click)="write()">
+</button>

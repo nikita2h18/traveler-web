@@ -1,18 +1,23 @@
 <p-card [header]="travel.pointTo" [style]="style" styleClass="p-card-shadow">
   <ng-template pTemplate="header">
     <app-card-user [travelId]="travel.id"></app-card-user>
-    <img alt="Card" src="../../../../assets/0-tunis.jpg" height="220"/></ng-template>
-  <p>{{travel.description}}</p>
+    <img alt="Card" src="../../../../assets/0-tunis.jpg" height="400"/></ng-template>
+  <p [innerHTML]="travel.description"></p>
   <ng-template pTemplate="footer">
     <div class="card__icons">
-      <div class="card__icon-section">
-        <i class="pi pi-heart card__icon"></i>
-        <p> Like</p>
+      <div class="card__icon-section" (click)="like()">
+        <i class="pi pi-heart card__icon"
+           [ngClass]="{liked: isLiked}"></i>
+        <div *ngIf="!!likesCount">{{likesCount}}</div>
+        <p>Like</p>
       </div>
-      <div class="card__icon-section">
+      <div class="card__icon-section" (click)="showComments = !showComments">
         <i class="pi pi-comment card__icon"></i>
-        <p> Comment</p>
+        <p>Comment</p>
       </div>
     </div>
   </ng-template>
 </p-card>
+<div *ngIf="showComments">
+  <app-comments><</app-comments>
+</div>

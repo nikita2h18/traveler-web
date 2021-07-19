@@ -9,26 +9,32 @@ import {InputTextModule} from "primeng/inputtext";
 import {FormsModule} from "@angular/forms";
 import {ButtonModule} from "primeng/button";
 import {EditorModule} from "primeng/editor";
+import {CommentsComponent} from "../../component/comments/comments.component";
+import {RippleModule} from "primeng/ripple";
+
 
 
 @NgModule({
   declarations: [
     TravelCreateComponent,
     TravelViewComponent,
-    CardUserComponent
+    CardUserComponent,
+    CommentsComponent
   ],
   exports: [
     TravelViewComponent,
-    CardUserComponent
+    CardUserComponent,
+    CommentsComponent
   ],
-    imports: [
-        CommonModule,
-        CardModule,
-        InputTextareaModule,
-        InputTextModule,
-        FormsModule,
-        ButtonModule,
-        EditorModule,
-    ]
+  imports: [
+    CommonModule,
+    CardModule,
+    InputTextareaModule,
+    InputTextModule,
+    FormsModule,
+    ButtonModule,
+    EditorModule,
+    RippleModule,
+  ]
 })
 export class TravelModule { }
