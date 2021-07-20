@@ -17,7 +17,7 @@ export class TravelViewComponent implements OnInit {
   }
   isLiked = false;
   likesCount = 0;
-  showComments: boolean = false;
+  showComments = false;
 
   constructor(
     private travelService: TravelService,
@@ -29,7 +29,12 @@ export class TravelViewComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.pipe(
       switchMap(params => {
-        this.likeService.isLiked(params['id']).subscribe(isLiked => this.isLiked = isLiked);
+        this.likeService.isLiked(params['id']).subscribe(isLiked => {
+          this.isLiked = isLiked
+        });
+        this.likeService.getByTravel(params['id']).subscribe(
+          likes => this.likesCount = likes.length
+        )
         return this.travelService.getTravel(params['id'])
       })
     ).subscribe((travel: Travel) => {

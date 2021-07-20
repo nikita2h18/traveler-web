@@ -13,15 +13,15 @@ export class CommentService {
     private http: HttpClient
   ) { }
 
-  public getAll() {
-    return this.http.get<Comment[]>(API_URL + 'comment/all');
-  }
-
   public write(comment: WriteComment) {
     return this.http.post(API_URL + 'comment', comment, {
       headers: {
         token: localStorage.getItem('token') as string,
       }
     })
+  }
+
+  getByTravel(travelId: string) {
+    return this.http.get<Comment[]>(API_URL + 'comment/travel/' + travelId);
   }
 }

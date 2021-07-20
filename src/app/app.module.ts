@@ -28,6 +28,7 @@ import { TravelListComponent } from './module/travel/travel-list/travel-list.com
 import {CardModule} from "primeng/card";
 import { UserComponent } from './component/user/user.component';
 import {RippleModule} from "primeng/ripple";
+import { ProfileViewComponent } from './component/profile-view/profile-view.component';
 
 @NgModule({
     declarations: [
@@ -40,6 +41,7 @@ import {RippleModule} from "primeng/ripple";
         ToolbarComponent,
         TravelListComponent,
         UserComponent,
+        ProfileViewComponent,
     ],
     imports: [
         BrowserModule,

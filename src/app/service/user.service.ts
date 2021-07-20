@@ -24,4 +24,8 @@ export class UserService {
   getByTravel(travelId: number) {
     return this.http.get<User>(API_URL + 'user/travel/' + travelId);
   }
+
+  getById(id: number) {
+    return this.http.get<User>(API_URL + 'user/get/' + id);
+  }
 }

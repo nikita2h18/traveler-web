@@ -8,7 +8,6 @@
       <div class="card__icon-section" (click)="like()">
         <i class="pi pi-heart card__icon"
            [ngClass]="{liked: isLiked}"></i>
-        <div *ngIf="!!likesCount">{{likesCount}}</div>
         <p>Like</p>
       </div>
       <div class="card__icon-section" (click)="showComments = !showComments">
@@ -16,6 +15,7 @@
         <p>Comment</p>
       </div>
     </div>
+    <div *ngIf="!!likesCount">{{likesCount}} person(s) like it</div>
   </ng-template>
 </p-card>
 <div *ngIf="showComments">

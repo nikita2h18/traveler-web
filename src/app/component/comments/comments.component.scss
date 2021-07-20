@@ -1,0 +1,20 @@
+.comments-container {
+  background: white;
+  width: 660px;
+}
+.comment {
+  display: flex;
+  align-items: center;
+  min-height: 50px;
+  height: 100%;
+  border-top: 1px solid grey;
+
+  &__input-container {
+    background: white;
+    width: 660px;
+  }
+
+  &__input {
+    width: 620px;
+  }
+}

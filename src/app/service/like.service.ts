@@ -20,10 +20,14 @@ export class LikeService {
   }
 
   isLiked(id: string) {
-    return this.http.get<boolean>(API_URL + 'like', {
+    return this.http.get<boolean>(API_URL + 'like/' + id, {
       headers: {
         token: localStorage.getItem('token') as string
       }
     })
+  }
+
+  getByTravel(id: string) {
+    return this.http.get<[]>(API_URL + 'like/all/' + id);
   }
 }

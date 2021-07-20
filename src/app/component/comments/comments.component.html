@@ -1,13 +1,21 @@
-<div *ngIf="comments">
-  <div *ngFor="let comment of comments">
+<div *ngIf="comments" class="comments-container">
+  <p>Comments: </p>
+  <div *ngFor="let comment of comments" class="comment">
     {{comment.message}}
   </div>
 </div>
-<input type="text" pInputText [(ngModel)]="writeComment.message">
-<button pButton
-        pRipple
-        type="button"
-        icon="pi pi-check"
-        class="p-button-rounded p-button-text"
-        (click)="write()">
-</button>
+<div class="comment__input-container">
+  <input type="text"
+         class="comment__input"
+         placeholder="comment..."
+         pInputText
+         [(ngModel)]="writeComment.message">
+  <button pButton
+          pRipple
+          type="button"
+          icon="pi pi-check"
+          class="p-button-rounded p-button-text comment__button"
+          (click)="write()">
+  </button>
+</div>
+
