@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {API_URL} from "../globals";
 import {Profile} from "../dto/Profile";
+import {User} from "../dto/User";
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +19,9 @@ export class ProfileService {
         token: localStorage.getItem('token') as string
       }
     });
+  }
+
+  get(userId: number) {
+    return this.http.get<Profile[]>(API_URL + 'profile/' + userId)
   }
 }

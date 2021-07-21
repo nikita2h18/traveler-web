@@ -34,7 +34,7 @@ const mainRouts = [
     component: TravelListComponent,
   },
   {
-    path: 'profile/view',
+    path: 'profile/view/:id',
     component: ProfileViewComponent,
   }
 ]

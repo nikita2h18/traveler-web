@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {API_URL} from "../globals";
 import {Travel} from "../dto/Travel";
+import {User} from "../dto/User";
 
 @Injectable({
   providedIn: 'root'
@@ -16,15 +17,11 @@ export class TravelService {
     return this.http.get<Travel[]>(API_URL + 'travel/view');
   }
 
-  public getUserTravels(token: string) {
-    this.http.get<Travel[]>(API_URL + 'campaign/user', {
-      headers: {
-        token
-      }
-    });
+  public getUserTravels(userId: number) {
+    return this.http.get<Travel[]>(API_URL + 'travel/user/' + userId);
   }
 
-  public getTravel(id: bigint) {
+  public getTravel(id: string) {
     return this.http.get<Travel>(API_URL + 'travel/view/' + id, {
       headers: {
         token: localStorage.getItem('token') as string,

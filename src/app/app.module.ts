@@ -29,6 +29,8 @@ import {CardModule} from "primeng/card";
 import { UserComponent } from './component/user/user.component';
 import {RippleModule} from "primeng/ripple";
 import { ProfileViewComponent } from './component/profile-view/profile-view.component';
+import { SubscribersListComponent } from './component/subscribers-list/subscribers-list.component';
+import { UsersListComponent } from './component/users-list/users-list.component';
 
 @NgModule({
     declarations: [
@@ -42,6 +44,8 @@ import { ProfileViewComponent } from './component/profile-view/profile-view.comp
         TravelListComponent,
         UserComponent,
         ProfileViewComponent,
+        SubscribersListComponent,
+        UsersListComponent,
     ],
     imports: [
         BrowserModule,

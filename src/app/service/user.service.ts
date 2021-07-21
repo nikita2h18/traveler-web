@@ -28,4 +28,12 @@ export class UserService {
   getById(id: number) {
     return this.http.get<User>(API_URL + 'user/get/' + id);
   }
+
+  findAll() {
+    return this.http.get<[]>(API_URL + 'user/all', {
+      headers: {
+        token: localStorage.getItem('token') as string
+      }
+    })
+  }
 }

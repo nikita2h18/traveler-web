@@ -11,13 +11,15 @@ import {LikeService} from "../../../service/like.service";
   styleUrls: ['./travel-view.component.scss']
 })
 export class TravelViewComponent implements OnInit {
-  @Input() public travel!: Travel;
+  @Input() public travel: Travel = new Travel(1, '', '', '');
   public style = {
     width: '660px',
+    minHeight: '465px',
   }
   isLiked = false;
   likesCount = 0;
   showComments = false;
+  paramsId = '';
 
   constructor(
     private travelService: TravelService,
@@ -27,24 +29,10 @@ export class TravelViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.pipe(
-      switchMap(params => {
-        this.likeService.isLiked(params['id']).subscribe(isLiked => {
-          this.isLiked = isLiked
-        });
-        this.likeService.getByTravel(params['id']).subscribe(
-          likes => this.likesCount = likes.length
-        )
-        return this.travelService.getTravel(params['id'])
-      })
-    ).subscribe((travel: Travel) => {
-      this.travel = new Travel(
-        travel.id,
-        travel.description,
-        travel.pointFrom,
-        travel.pointTo
-      )
-    });
+    this.getParams();
+    this.getTravel();
+    this.isTravelLiked();
+    this.getLikes();
   }
 
   like() {
@@ -56,4 +44,30 @@ export class TravelViewComponent implements OnInit {
     )
   }
 
+  private getParams() {
+    this.route.params.subscribe(params => this.paramsId = params['id']);
+  }
+
+  private isTravelLiked() {
+    this.likeService.isLiked(this.paramsId).subscribe(isLiked => {
+      this.isLiked = isLiked
+    });
+  }
+
+  private getLikes() {
+    this.likeService.getByTravel(this.paramsId).subscribe(
+      likes => this.likesCount = likes.length
+    )
+  }
+
+  private getTravel() {
+    this.travelService.getTravel(this.paramsId).subscribe((travel: Travel) => {
+      this.travel = new Travel(
+        travel.id,
+        travel.description,
+        travel.pointFrom,
+        travel.pointTo
+      )
+    });
+  }
 }

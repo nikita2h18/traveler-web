@@ -3,11 +3,11 @@
     Traveler
   </div>
   <div class="flex__nav">
-    <i class="pi pi-home header__icon" routerLink="/main/profile/view"></i>
+    <i class="pi pi-home header__icon" [routerLink]="'/main/profile/view/' + user.id"></i>
     <i class="pi pi-send header__icon"></i>
     <i class="pi pi-plus-circle header__icon"
        routerLink="/main/travel/create"></i>
     <i class="pi pi-sign-out header__icon"
-       routerLink="/preview/auth"></i>
+       (click)="onSignOut()"></i>
   </div>
 </header>

@@ -1,7 +1,10 @@
 <div class="user">
   <div class="user__info">
     <img class="avatar" src="../../../assets/avatar.jpg" alt="Avatar"/>
-    <div class="user__login" *ngIf="!!user">{{user.login}}</div>
+    <div class="user__credentials" *ngIf="!!user">
+      <div>{{user.login}}</div>
+      <div *ngIf="!!profile">{{profile.name}} {{profile.lastname}}</div>
+    </div>
   </div>
 
   <i class="pi pi-pencil user__edit" (click)="isEdit = !isEdit"></i>

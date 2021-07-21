@@ -1,1 +1,10 @@
-<p>profile-view works!</p>
+<div>
+  <img src="../../../assets/avatar.jpg" height="186" width="186" alt="Avatar"/>
+  <div>{{user.login}}</div>
+  <div>{{profile.name}}</div>
+  <div>{{profile.lastname}}</div>
+  <div>{{profile.birthday | date}}</div>
+</div>
+<div *ngFor="let travel of travels">
+  <img src="../../../assets/0-tunis.jpg" height="220" width="220"/>
+</div>

@@ -1,4 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
+import {UserService} from "../../service/user.service";
+import {User} from "../../dto/User";
 
 @Component({
   selector: 'app-toolbar',
@@ -6,10 +9,20 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent implements OnInit {
+  public user = new User(0, '', '')
 
   constructor(
-  ) { }
+    private router: Router,
+    private userService: UserService,
+  ) {
+  }
 
   ngOnInit(): void {
+    this.userService.getByToken().subscribe(user => this.user = user)
+  }
+
+  onSignOut() {
+    localStorage.removeItem('token');
+    this.router.navigateByUrl('/preview/auth');
   }
 }
