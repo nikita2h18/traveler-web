@@ -12,12 +12,20 @@ export class SubscriberService {
   ) {
   }
 
-  public getUserSubscribers(id: number) {
+  public getUserSubscribers(id: string) {
     return this.http.get<[]>(API_URL + 'subscriber/all/' + id);
   }
 
   public subscribeToUser(userId: number) {
     return this.http.post(API_URL + 'subscriber', { userId: userId }, {
+      headers: {
+        token: localStorage.getItem('token') as string
+      }
+    });
+  }
+
+  unsubscribeFromUser(userId: number) {
+    return this.http.delete(API_URL + 'subscriber/' + userId, {
       headers: {
         token: localStorage.getItem('token') as string
       }

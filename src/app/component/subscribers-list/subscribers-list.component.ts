@@ -21,11 +21,12 @@ export class SubscribersListComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.subscription = this.subscriberService.getUserSubscribers(1).subscribe(users => this.users = users)
+    this.subscription = this.subscriberService.getUserSubscribers(localStorage.getItem('userId') as string)
+      .subscribe(users => this.users = users);
   }
 
   unsubscribe(userId: number) {
-    return this.subscriberService.subscribeToUser(userId).subscribe(
+    return this.subscriberService.unsubscribeFromUser(userId).subscribe(
       next => {
         this.subscription.unsubscribe();
         this.ngOnInit();

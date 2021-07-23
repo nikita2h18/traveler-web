@@ -3,7 +3,7 @@ import {UserCredentials} from "../../dto/UserCredentials";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../../service/auth.service";
-import {TokenProviderService} from "../../service/token-provider.service";
+import {meProviderService} from "../../service/me-provider.service";
 
 @Component({
   selector: 'app-auth',
@@ -19,7 +19,7 @@ export class AuthComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService,
-    private tokenProviderService: TokenProviderService,
+    private meProviderService: meProviderService,
   ) {
   }
 
@@ -41,7 +41,8 @@ export class AuthComponent implements OnInit {
 
     this.authService.auth(userCredentials).subscribe(
       token => {
-        this.tokenProviderService.setToken(token);
+        this.meProviderService.setToken(token);
+        this.meProviderService.setUserId();
         this.router.navigateByUrl('/main/travels');
       }
     );
