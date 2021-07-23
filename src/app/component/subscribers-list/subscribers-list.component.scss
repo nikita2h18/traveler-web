@@ -1,0 +1,37 @@
+.subscribes {
+  margin-top: 20px;
+  display: grid;
+  align-items: center;
+  background: white;
+  font-family: "Paper Cuts", sans-serif;
+  border-radius: 3px;
+
+  &__header{
+    margin-left: 10px;
+  }
+
+  .subscribe {
+    display: flex;
+    height: 90px;
+    align-items: center;
+    border-top: 1px solid lightgray;
+    padding: 10px;
+    justify-content: space-between;
+
+    &__info {
+      display: flex;
+      align-items: center;
+    }
+
+    &__img {
+      height: 60px;
+      width: 60px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+  }
+
+  .table-user:last-child {
+    border-bottom: 1px solid lightgray;
+  }
+}

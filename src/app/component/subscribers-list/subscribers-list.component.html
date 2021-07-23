@@ -1,1 +1,20 @@
-<p>subscribers-list works!</p>
+<div *ngIf="!!users" class="subscribes">
+  <header class="subscribes__header">
+    <h3>
+      Subscriptions
+    </h3>
+  </header>
+  <div *ngFor="let user of users" class="table-user">
+    <div class="table-user__info">
+      <img src="../../../assets/avatar.jpg" class="table-user__img"/>
+      {{user.login}}
+    </div>
+    <button pButton
+            type="button"
+            label="unsubscribe"
+            icon="pi pi-times"
+            iconPos="right"
+            (click)="unsubscribe(user.id)"
+            class="p-button-text p-button-danger"></button>
+  </div>
+</div>
