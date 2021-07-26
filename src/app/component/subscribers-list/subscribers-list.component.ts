@@ -12,7 +12,7 @@ import {Subscriber} from "../../dto/Subscriber";
   styleUrls: ['./subscribers-list.component.scss']
 })
 export class SubscribersListComponent implements OnInit, OnDestroy {
-  public users!: User[];
+  public users: User[] = []
   private subscription: Subscription = new Subscription();
 
   constructor(

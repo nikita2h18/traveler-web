@@ -22,56 +22,62 @@ import {ToastModule} from "primeng/toast";
 import {MessageService} from "primeng/api";
 import {CalendarModule} from 'primeng/calendar';
 import {TravelModule} from "./module/travel/travel.module";
-import { PreviewComponent } from './component/preview/preview.component';
-import { ToolbarComponent } from './component/toolbar/toolbar.component';
-import { TravelListComponent } from './module/travel/travel-list/travel-list.component';
+import {PreviewComponent} from './component/preview/preview.component';
+import {ToolbarComponent} from './component/toolbar/toolbar.component';
+import {TravelListComponent} from './module/travel/travel-list/travel-list.component';
 import {CardModule} from "primeng/card";
-import { UserComponent } from './component/user/user.component';
+import {UserComponent} from './component/user/user.component';
 import {RippleModule} from "primeng/ripple";
-import { ProfileViewComponent } from './component/profile-view/profile-view.component';
-import { SubscribersListComponent } from './component/subscribers-list/subscribers-list.component';
-import { UsersListComponent } from './component/users-list/users-list.component';
+import {ProfileViewComponent} from './component/profile-view/profile-view.component';
+import {SubscribersListComponent} from './component/subscribers-list/subscribers-list.component';
+import {UsersListComponent} from './component/users-list/users-list.component';
+import {SocketIoModule, SocketIoConfig} from 'ngx-socket-io';
+import { ChatComponent } from './component/chat/chat.component';
+
+const config: SocketIoConfig = {url: 'http://localhost:3000', options: {}};
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        RegistrationComponent,
-        AuthComponent,
-        MainComponent,
-        CreateProfileComponent,
-        PreviewComponent,
-        ToolbarComponent,
-        TravelListComponent,
-        UserComponent,
-        ProfileViewComponent,
-        SubscribersListComponent,
-        UsersListComponent,
-    ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        AppRoutingModule,
-        PasswordModule,
-        DividerModule,
-        FormsModule,
-        ReactiveFormsModule,
-        InputTextModule,
-        ButtonModule,
-        HttpClientModule,
-        NgxsModule.forRoot([]),
-        NgxsReduxDevtoolsPluginModule.forRoot(),
-        NgxsLoggerPluginModule.forRoot(),
-        StepsModule,
-        MenuModule,
-        ToastModule,
-        CalendarModule,
-        TravelModule,
-        CardModule,
-        RippleModule
-    ],
-    providers: [MessageService],
+  declarations: [
+    AppComponent,
+    RegistrationComponent,
+    AuthComponent,
+    MainComponent,
+    CreateProfileComponent,
+    PreviewComponent,
+    ToolbarComponent,
+    TravelListComponent,
+    UserComponent,
+    ProfileViewComponent,
+    SubscribersListComponent,
+    UsersListComponent,
+    ChatComponent,
+  ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    PasswordModule,
+    DividerModule,
+    FormsModule,
+    ReactiveFormsModule,
+    InputTextModule,
+    ButtonModule,
+    HttpClientModule,
+    NgxsModule.forRoot([]),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
+    NgxsLoggerPluginModule.forRoot(),
+    StepsModule,
+    MenuModule,
+    ToastModule,
+    CalendarModule,
+    TravelModule,
+    CardModule,
+    RippleModule,
+    SocketIoModule.forRoot(config)
+  ],
+  providers: [MessageService],
   exports: [],
-    bootstrap: [AppComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }

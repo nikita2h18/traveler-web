@@ -1,0 +1,12 @@
+<div *ngFor="let message of messages">
+  {{message}}
+</div>
+
+<textarea spellcheck="true"
+          autoComplete="true"
+          autocorrect="true"
+          rows="1"
+          class="chat-input" [(ngModel)]="message"
+          placeholder="type message..." (keyup.enter)="addChat()">
+</textarea>
+<button (click)="addChat()"></button>
