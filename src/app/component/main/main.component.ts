@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {MenuItem} from "primeng/api";
+import {NotificationService} from "../../service/notification.service";
 
 @Component({
   selector: 'app-main',
@@ -11,15 +12,12 @@ export class MainComponent implements OnInit {
 
   public items!: MenuItem[];
 
-  constructor() {
+  constructor(
+    private notifyService: NotificationService
+  ) {
   }
 
   ngOnInit() {
-    this.items = [
-      {
-        label: 'Profile Info',
-        routerLink: 'profile/create'
-      }
-    ];
+    this.notifyService.notify(Number(localStorage.getItem('userId')));
   }
 }

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject} from "rxjs";
-import {Token} from "../dto/Token";
 import {LOCALSTORAGE_TOKEN_NAME} from "../globals";
 import {UserService} from "./user.service";
 
@@ -8,20 +7,19 @@ import {UserService} from "./user.service";
   providedIn: 'root'
 })
 export class meProviderService {
-  private tokenSubject = new BehaviorSubject<Token>(new Token());
+  private tokenSubject = new BehaviorSubject<string>('');
   public token = this.tokenSubject.asObservable();
 
-  constructor(private userService: UserService) {
+  constructor() {
   }
 
-  setToken(token: Token) {
-    this.tokenSubject.next(token);
-    localStorage.setItem(LOCALSTORAGE_TOKEN_NAME, token.token as string);
+  setToken(response: { token: string, userId: string }) {
+    this.tokenSubject.next(response.token);
+    localStorage.setItem(LOCALSTORAGE_TOKEN_NAME, response.token);
   }
 
-  setUserId() {
-    this.userService.getByToken().subscribe(
-      user => localStorage.setItem('userId', user.id.toString()),
-    )
+  setUserId(response: { token: string, userId: string }) {
+    this.tokenSubject.next(response.userId);
+    localStorage.setItem('userId', response.userId)
   }
 }

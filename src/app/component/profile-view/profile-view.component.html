@@ -1,10 +1,22 @@
-<div>
-  <img src="../../../assets/avatar.jpg" height="186" width="186" alt="Avatar"/>
-  <div>{{user.login}}</div>
-  <div>{{profile.name}}</div>
-  <div>{{profile.lastname}}</div>
-  <div>{{profile.birthday | date}}</div>
+<div class="profile-view">
+  <img src="../../../assets/avatar.jpg" class="profile-view__avatar" alt="Avatar"/>
+  <div>
+    <div class="profile-view__login">
+      <p>{{user.login}}</p>
+      <button pButton pRipple type="button" label="Edit Profile" class="p-button-outlined p-button-secondary"></button>
+    </div>
+    <p>{{profile.name}}</p>
+    <div>{{profile.lastname}}</div>
+    <div>{{profile.birthday | date}}</div>
+  </div>
 </div>
-<div *ngFor="let travel of travels">
-  <img src="../../../assets/0-tunis.jpg" height="220" width="220"/>
+<div *ngIf="travels.length > 0; else empty" class="profile-view__travel-list">
+  <p>Travels: </p>
+  <div *ngFor="let travel of travels">
+    <img src="../../../assets/0-tunis.jpg" class="profile-view__travel-photo" [routerLink]="'/main/travel/view/' + travel.id"/>
+  </div>
 </div>
+
+<ng-template #empty>
+  No travels
+</ng-template>

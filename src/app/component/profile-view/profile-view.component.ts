@@ -24,7 +24,7 @@ export class ProfileViewComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.userService.getByToken().pipe(
+    this.userService.getById(Number(localStorage.getItem('userId'))).pipe(
       switchMap(user => {
         this.user = user
         return this.profileService.get(this.user.id)

@@ -41,8 +41,9 @@ export class AuthComponent implements OnInit {
 
     this.authService.auth(userCredentials).subscribe(
       token => {
+        console.log(token)
         this.meProviderService.setToken(token);
-        this.meProviderService.setUserId();
+        this.meProviderService.setUserId(token);
         this.router.navigateByUrl('/main/travels');
       }
     );
