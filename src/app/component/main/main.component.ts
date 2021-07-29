@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges, ViewEncapsulation} from '@angular/core';
 import {MenuItem} from "primeng/api";
 import {NotificationService} from "../../service/notification.service";
 
@@ -19,5 +19,12 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
     this.notifyService.notify(Number(localStorage.getItem('userId')));
+    this.notifyService.receiveNotify().subscribe(
+      notify => console.log(notify)
+    )
+  }
+
+  click() {
+    this.notifyService.sendNotify()
   }
 }

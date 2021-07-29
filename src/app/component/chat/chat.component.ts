@@ -15,7 +15,7 @@ export class ChatComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.chatService.receiveChat().subscribe((message: string) => this.messages.push(message));
+    this.chatService.receiveChat().subscribe((message: string) => this.messages.push(message));
   }
 
   addChat() {

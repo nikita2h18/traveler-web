@@ -17,7 +17,9 @@ export class CardUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.getByTravel(this.travelId).subscribe(
-      user => this.userLogin = user.login
+      user => {
+        this.userLogin = user.login
+      }
     );
   }
 

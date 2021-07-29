@@ -3,7 +3,8 @@ export class Travel {
     public id: number,
     public description: string,
     public pointFrom: string,
-    public pointTo: string
+    public pointTo: string,
+    public userId: number,
   ){
   }
 }

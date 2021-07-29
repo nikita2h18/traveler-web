@@ -10,7 +10,7 @@ import {Subscription} from "rxjs";
   styleUrls: ['./travel-create.component.scss']
 })
 export class TravelCreateComponent  {
-  public travel: Travel = new Travel(0, '', '', '');
+  public travel: Travel = new Travel(0, '', '', '', Number(localStorage.getItem('userId')));
 
   constructor(
     private travelService: TravelService,

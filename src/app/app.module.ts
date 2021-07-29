@@ -73,7 +73,7 @@ const config: SocketIoConfig = {url: 'http://localhost:3000', options: {}};
     TravelModule,
     CardModule,
     RippleModule,
-    SocketIoModule.forRoot(config)
+    SocketIoModule.forRoot(config),
   ],
   providers: [MessageService],
   exports: [],

@@ -1,8 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 import {TravelService} from "../../../service/travel.service";
 import {Travel} from "../../../dto/Travel";
-import {switchMap} from "rxjs/operators";
 import {LikeService} from "../../../service/like.service";
 
 @Component({
@@ -11,7 +10,7 @@ import {LikeService} from "../../../service/like.service";
   styleUrls: ['./travel-view.component.scss']
 })
 export class TravelViewComponent implements OnInit {
-  @Input() public travel: Travel = new Travel(1, '', '', '');
+  @Input() public travel: Travel = new Travel(1, '', '', '', 0);
   public style = {
     width: '660px',
     minHeight: '465px',
@@ -19,7 +18,7 @@ export class TravelViewComponent implements OnInit {
   isLiked = false;
   likesCount = 0;
   showComments = false;
-  paramsId = '';
+  travelId = 0;
 
   constructor(
     private travelService: TravelService,
@@ -45,28 +44,29 @@ export class TravelViewComponent implements OnInit {
   }
 
   private getParams() {
-    this.route.params.subscribe(params => this.paramsId = params['id']);
+    this.route.params.subscribe(params => this.travelId = Number(params['id']));
   }
 
   private isTravelLiked() {
-    this.likeService.isLiked(this.paramsId).subscribe(isLiked => {
+    this.likeService.isLiked(this.travelId).subscribe(isLiked => {
       this.isLiked = isLiked
     });
   }
 
   private getLikes() {
-    this.likeService.getByTravel(this.paramsId).subscribe(
+    this.likeService.getByTravel(this.travelId).subscribe(
       likes => this.likesCount = likes.length
     )
   }
 
   private getTravel() {
-    this.travelService.getTravel(this.paramsId).subscribe((travel: Travel) => {
+    this.travelService.getTravel(this.travelId).subscribe((travel: Travel) => {
       this.travel = new Travel(
         travel.id,
         travel.description,
         travel.pointFrom,
-        travel.pointTo
+        travel.pointTo,
+        travel.userId
       )
     });
   }

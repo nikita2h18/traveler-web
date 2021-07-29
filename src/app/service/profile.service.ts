@@ -21,6 +21,14 @@ export class ProfileService {
     });
   }
 
+  edit(profile: Profile) {
+    return this.http.put<void>(API_URL + 'profile/edit', profile, {
+      headers: {
+        token: localStorage.getItem('token') as string
+      }
+    });
+  }
+
   get(userId: number) {
     return this.http.get<Profile[]>(API_URL + 'profile/' + userId)
   }

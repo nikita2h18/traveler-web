@@ -4,7 +4,7 @@
       All users
     </h3>
   </header>
-  <div *ngFor="let user of users" class="table-user">
+  <div *ngFor="let user of users" class="table-user" [routerLink]="'profile/view/' + user.id">
     <div class="table-user__info">
       <img src="../../../assets/avatar.jpg" class="table-user__img"/>
       {{user.login}}

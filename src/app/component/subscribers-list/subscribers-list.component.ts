@@ -21,7 +21,6 @@ export class SubscribersListComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    console.log('init')
     this.subscription = this.subscriberService.getUserSubscribers(localStorage.getItem('userId') as string)
       .subscribe(users => this.users = users);
   }

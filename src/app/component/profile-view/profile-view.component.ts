@@ -6,6 +6,7 @@ import {Profile} from "../../dto/Profile";
 import {TravelService} from "../../service/travel.service";
 import {switchMap} from "rxjs/operators";
 import {Travel} from "../../dto/Travel";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-profile-view',
@@ -21,10 +22,12 @@ export class ProfileViewComponent implements OnInit {
     private userService: UserService,
     private profileService: ProfileService,
     private travelService: TravelService,
+    private router: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
-    this.userService.getById(Number(localStorage.getItem('userId'))).pipe(
+    this.getParam();
+    this.userService.getById(this.user.id).pipe(
       switchMap(user => {
         this.user = user
         return this.profileService.get(this.user.id)
@@ -36,4 +39,9 @@ export class ProfileViewComponent implements OnInit {
     ).subscribe(travels => this.travels = travels)
   }
 
+  getParam() {
+    this.router.params.subscribe(
+      params => this.user.id = params['id']
+    )
+  }
 }

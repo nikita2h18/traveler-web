@@ -1,7 +1,6 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit, Output, ViewEncapsulation, EventEmitter} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
-import {MessageService} from "primeng/api";
 import {ProfileService} from "../../service/profile.service";
 import {Profile} from "../../dto/Profile";
 
@@ -12,15 +11,17 @@ import {Profile} from "../../dto/Profile";
   encapsulation: ViewEncapsulation.None
 })
 export class CreateProfileComponent implements OnInit {
+  @Output() onClick = new EventEmitter();
   public form!: FormGroup;
+  private profile!: Profile;
 
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private profileService: ProfileService,
-    public messageService: MessageService
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
@@ -28,26 +29,28 @@ export class CreateProfileComponent implements OnInit {
       lastname: ['', Validators.required],
       birthday: ['', Validators.required]
     });
+    this.profileService.get(Number(localStorage.getItem('userId'))).subscribe(
+      profile => this.profile = profile[0]
+    )
   }
+
 
   onSubmit() {
     if (this.form.invalid) {
       return;
     }
-
-    this.messageService.add({
-      severity:'success', summary:'Order submitted',
-      detail: 'Dear, ' + this.form.controls.name.value + ' ' +
-        this.form.controls.lastname.value + ' your order completed.'
-    });
+    this.onClick.emit(true);
 
     const profile = new Profile(
       this.form.controls.name.value,
       this.form.controls.lastname.value,
       this.form.controls.birthday.value
-      )
-    this.profileService.create(profile).subscribe(
-      () => this.router.navigateByUrl('main/travels')
     )
+
+    if (!!this.profile) {
+      this.profileService.edit(profile).subscribe()
+    } else {
+      this.profileService.create(profile).subscribe()
+    }
   }
 }

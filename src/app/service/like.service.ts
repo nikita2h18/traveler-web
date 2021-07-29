@@ -11,7 +11,7 @@ export class LikeService {
     private http: HttpClient
   ) { }
 
-  like(id: string) {
+  like(id: number) {
     return this.http.post<[]>(API_URL + 'like/' + id, {}, {
       headers: {
         token: localStorage.getItem('token') as string
@@ -19,7 +19,7 @@ export class LikeService {
     })
   }
 
-  isLiked(id: string) {
+  isLiked(id: number) {
     return this.http.get<boolean>(API_URL + 'like/' + id, {
       headers: {
         token: localStorage.getItem('token') as string
@@ -27,7 +27,7 @@ export class LikeService {
     })
   }
 
-  getByTravel(id: string) {
+  getByTravel(id: number) {
     return this.http.get<[]>(API_URL + 'like/all/' + id);
   }
 }

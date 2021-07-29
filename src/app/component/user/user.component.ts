@@ -4,6 +4,7 @@ import {User} from "../../dto/User";
 import {ProfileService} from "../../service/profile.service";
 import {Profile} from "../../dto/Profile";
 import {switchMap} from "rxjs/operators";
+import {MessageService} from "primeng/api";
 
 @Component({
   selector: 'app-user',
@@ -17,7 +18,8 @@ export class UserComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private profileService: ProfileService
+    private profileService: ProfileService,
+    public messageService: MessageService,
   ) {
   }
 
@@ -30,6 +32,15 @@ export class UserComponent implements OnInit {
     ).subscribe(profile => {
       this.profile = profile[0]
     })
+  }
+
+  showSuccess() {
+    this.messageService.add({severity: 'success', summary: 'Success'});
+    this.isEdit = false;
+  }
+
+  showError() {
+    this.messageService.add({severity: 'error', summary: 'Error'});
   }
 
 }

@@ -21,7 +21,7 @@ export class TravelService {
     return this.http.get<Travel[]>(API_URL + 'travel/user/' + userId);
   }
 
-  public getTravel(id: string) {
+  public getTravel(id: number) {
     return this.http.get<Travel>(API_URL + 'travel/view/' + id, {
       headers: {
         token: localStorage.getItem('token') as string,

@@ -79,6 +79,10 @@ body {
   }
 }
 
+.table-user:hover {
+  cursor: pointer;
+}
+
 .table-user:last-child {
   border-bottom: 1px solid lightgray;
 }

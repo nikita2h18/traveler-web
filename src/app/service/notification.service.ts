@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Socket} from "ngx-socket-io";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,13 @@ export class NotificationService {
 
   notify(userId: number) {
     this.socket.ioSocket.auth = { userId: userId };
-    this.socket.connect();
+  }
+
+  receiveNotify() {
+    return this.socket.fromEvent('notify');
+  }
+
+  sendNotify(){
+    this.socket.emit('notify');
   }
 }

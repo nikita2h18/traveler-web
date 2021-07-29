@@ -9,6 +9,7 @@
 
   <i class="pi pi-pencil user__edit" (click)="isEdit = !isEdit"></i>
 </div>
+<p-toast></p-toast>
 <div *ngIf="isEdit">
-  <app-create-profile></app-create-profile>
+  <app-create-profile (onClick)="$event ? this.showSuccess() : this.showError()"></app-create-profile>
 </div>
