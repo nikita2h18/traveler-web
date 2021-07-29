@@ -1,3 +1,4 @@
+<p-toast></p-toast>
 <div class="flex-center">
   <div class="form">
     <h1 class="form__header">Registration</h1>
@@ -8,6 +9,12 @@
       </div>
       <div class="p-field input">
         <p-password id="password" placeholder="password" formControlName="password"></p-password>
+      </div>
+      <div class="p-field input">
+        <p-password id="password-check"
+                    [feedback]="false"
+                    placeholder="check password"
+                    formControlName="checkPassword" ></p-password>
       </div>
       <p-button label="Next" (click)="onSubmit()"></p-button>
       <div class="form__link">

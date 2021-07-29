@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {RegistrationService} from "../../service/registration.service";
 import {UserCredentials} from "../../dto/UserCredentials";
+import {MessageService} from "primeng/api";
 
 @Component({
   selector: 'app-registration',
@@ -18,17 +19,27 @@ export class RegistrationComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private registrationService: RegistrationService,
+    public messageService: MessageService,
   ) {
   }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       login: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
+      checkPassword: ['', Validators.required]
     });
   }
 
+  showError() {
+    this.messageService.add({severity: 'error', summary: 'Error', detail: 'Check password!'});
+  }
+
   onSubmit() {
+    if (this.form.controls.checkPassword.value !== this.form.controls.password.value) {
+      this.showError();
+      return;
+    }
     if (this.form.invalid) {
       return;
     }
