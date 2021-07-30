@@ -33,6 +33,7 @@ import {SubscribersListComponent} from './component/subscribers-list/subscribers
 import {UsersListComponent} from './component/users-list/users-list.component';
 import {SocketIoModule, SocketIoConfig} from 'ngx-socket-io';
 import { ChatComponent } from './component/chat/chat.component';
+import { NotificationComponent } from './component/notification/notification.component';
 
 const config: SocketIoConfig = {url: 'http://localhost:3000', options: {}};
 
@@ -51,6 +52,7 @@ const config: SocketIoConfig = {url: 'http://localhost:3000', options: {}};
     SubscribersListComponent,
     UsersListComponent,
     ChatComponent,
+    NotificationComponent,
   ],
   imports: [
     BrowserModule,

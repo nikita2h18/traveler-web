@@ -21,6 +21,7 @@
   &__travel-list {
     margin-top: 50px;
     display: flex;
+    flex-wrap: wrap;
     font-family: "Paper Cuts", sans-serif;
     font-size: 20px;
   }

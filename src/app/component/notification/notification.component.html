@@ -1,0 +1,6 @@
+<div *ngIf="!!users.length" class="notifications">
+  <p *ngFor="let user of users">
+    User {{user.login}}
+    Added new travel, check his travel now!
+  </p>
+</div>

@@ -4,6 +4,7 @@
   </div>
   <div class="flex__nav">
     <i class="pi pi-home header__icon" [routerLink]="'/main/profile/view/' + user.id"></i>
+    <i class="pi pi-bell header__icon" [ngClass]="isNotified? 'notified' : ''" (click)="onClick()"></i>
     <i class="pi pi-send header__icon"></i>
     <i class="pi pi-plus-circle header__icon"
        routerLink="/main/travel/create"></i>

@@ -1,6 +1,6 @@
 <header class="header">
   <div class="container">
-    <app-toolbar></app-toolbar>
+    <app-toolbar (notifyClick)="onClick($event)" [isNotified]="isNotified"></app-toolbar>
   </div>
 </header>
 <div class="container components">
@@ -8,12 +8,13 @@
     <router-outlet></router-outlet>
   </div>
   <div class="components__right">
+    <div *ngIf="isBellClicked">
+      <app-notification [users]="users"></app-notification>
+    </div>
     <app-user></app-user>
     <app-subscribers-list></app-subscribers-list>
     <app-users-list></app-users-list>
-    <app-chat></app-chat>
-    <button (click)="click()">lalala</button>
-
+<!--    <app-chat></app-chat>-->
   </div>
 </div>
 

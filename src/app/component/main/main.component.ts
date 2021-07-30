@@ -1,6 +1,9 @@
 import {Component, OnChanges, OnInit, SimpleChanges, ViewEncapsulation} from '@angular/core';
 import {MenuItem} from "primeng/api";
 import {NotificationService} from "../../service/notification.service";
+import {UserService} from "../../service/user.service";
+import {switchMap} from "rxjs/operators";
+import {User} from "../../dto/User";
 
 @Component({
   selector: 'app-main',
@@ -9,22 +12,28 @@ import {NotificationService} from "../../service/notification.service";
   encapsulation: ViewEncapsulation.None
 })
 export class MainComponent implements OnInit {
-
+  public isBellClicked = false;
   public items!: MenuItem[];
+  public isNotified = false;
+  public users: User[] = [];
 
   constructor(
-    private notifyService: NotificationService
+    private notifyService: NotificationService,
+    private userService: UserService,
   ) {
   }
 
   ngOnInit() {
     this.notifyService.notify(Number(localStorage.getItem('userId')));
-    this.notifyService.receiveNotify().subscribe(
-      notify => console.log(notify)
-    )
+    this.notifyService.onNewNotification().pipe(
+      switchMap(user => this.userService.getById(user.userId))
+    ).subscribe(user => {
+      this.isNotified = true;
+      this.users.push(user);
+    });
   }
 
-  click() {
-    this.notifyService.sendNotify()
+  onClick(isClicked: boolean) {
+    this.isBellClicked = isClicked
   }
 }

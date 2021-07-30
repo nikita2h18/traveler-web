@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {ChatService} from "../../service/chat.service";
-import {NotificationService} from "../../service/notification.service";
 
 @Component({
   selector: 'app-chat',

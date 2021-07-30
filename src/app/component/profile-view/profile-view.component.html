@@ -10,8 +10,9 @@
     <div>{{profile.birthday | date}}</div>
   </div>
 </div>
+
+<p style="margin-top: 40px">Travels: </p>
 <div *ngIf="travels.length > 0; else empty" class="profile-view__travel-list">
-  <p>Travels: </p>
   <div *ngFor="let travel of travels">
     <img src="../../../assets/0-tunis.jpg" class="profile-view__travel-photo" [routerLink]="'/main/travel/view/' + travel.id"/>
   </div>

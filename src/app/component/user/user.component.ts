@@ -37,6 +37,7 @@ export class UserComponent implements OnInit {
   showSuccess() {
     this.messageService.add({severity: 'success', summary: 'Success'});
     this.isEdit = false;
+    this.ngOnInit();
   }
 
   showError() {

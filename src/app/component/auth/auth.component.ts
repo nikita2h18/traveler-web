@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../../service/auth.service";
 import {meProviderService} from "../../service/me-provider.service";
+import {MessageService} from "primeng/api";
 
 @Component({
   selector: 'app-auth',
@@ -20,6 +21,7 @@ export class AuthComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private meProviderService: meProviderService,
+    public messageService: MessageService,
   ) {
   }
 
@@ -30,8 +32,13 @@ export class AuthComponent implements OnInit {
     });
   }
 
+  showError() {
+    this.messageService.add({severity: 'error', summary: 'Error', detail: 'Check your credentials!'});
+  }
+
   onSubmit() {
     if (this.form.invalid) {
+      this.showError();
       return;
     }
     const userCredentials = new UserCredentials(
@@ -45,7 +52,8 @@ export class AuthComponent implements OnInit {
         this.meProviderService.setToken(token);
         this.meProviderService.setUserId(token);
         this.router.navigateByUrl('/main/travels');
-      }
+      },
+      () => this.showError()
     );
   }
 }

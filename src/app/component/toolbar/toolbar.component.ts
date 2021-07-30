@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {Router} from "@angular/router";
 import {UserService} from "../../service/user.service";
 import {User} from "../../dto/User";
@@ -9,7 +9,10 @@ import {User} from "../../dto/User";
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent implements OnInit {
+  @Input() isNotified = false;
+  @Output() notifyClick = new EventEmitter<boolean>();
   public user = new User(0, '', '')
+  private isClicked = false;
 
   constructor(
     private router: Router,
@@ -25,5 +28,11 @@ export class ToolbarComponent implements OnInit {
     localStorage.removeItem('token');
     localStorage.removeItem('userId');
     this.router.navigateByUrl('/preview/auth');
+  }
+
+  onClick() {
+    this.isClicked = !this.isClicked;
+    this.isNotified = false;
+    this.notifyClick.emit(this.isClicked);
   }
 }
