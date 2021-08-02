@@ -17,7 +17,8 @@ export class CommentsComponent implements OnInit, OnDestroy {
   public comments: Comment[] = [];
   public writeComment!: WriteComment;
   private subscription!: Subscription;
-  public user = new User(0, '', '')
+  public user = new User(0, '', '');
+  public users: User[] = [];
 
   constructor(
     private commentService: CommentService,
@@ -29,7 +30,8 @@ export class CommentsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscription = this.route.params.pipe(
       switchMap(params => {
-        this.writeComment = new WriteComment('', params['id'])
+        this.writeComment = new WriteComment('', params['id']);
+        this.getUser(Number(params['id']));
         return this.commentService.getByTravel(params['id']);
       })
     ).subscribe(
@@ -40,7 +42,10 @@ export class CommentsComponent implements OnInit, OnDestroy {
   }
 
   getUser(id: number) {
-    return this.userService.getById(id).subscribe(user => this.user = user);
+    this.userService.getById(id).subscribe(user => {
+      this.users.push(user);
+      this.user = user;
+    });
   }
 
   ngOnDestroy() {

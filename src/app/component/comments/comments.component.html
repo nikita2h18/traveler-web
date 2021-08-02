@@ -1,7 +1,7 @@
 <div *ngIf="comments" class="comments-container">
   <p>Comments: </p>
   <div *ngFor="let comment of comments" class="comment">
-    {{comment.message}}
+    <p>{{comment.message}}</p>
   </div>
 </div>
 <div class="comment__input-container">

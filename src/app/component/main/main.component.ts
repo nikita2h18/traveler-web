@@ -24,6 +24,17 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.notifyService.getNotification().subscribe(
+      notifications => {
+        this.isNotified = !!notifications.length;
+        console.log(notifications)
+        notifications.forEach(
+          notification => this.userService.getById(notification.subscribeId).subscribe(
+            user => this.users.push(user)
+          )
+        )
+      }
+    )
     this.notifyService.notify(Number(localStorage.getItem('userId')));
     this.notifyService.onNewNotification().pipe(
       switchMap(user => this.userService.getById(user.userId))

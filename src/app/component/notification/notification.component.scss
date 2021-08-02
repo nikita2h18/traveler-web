@@ -1,5 +1,17 @@
 .notifications {
   position: absolute;
   width: 368.55px;
-  height: 100px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 3px;
+  border: 1px solid lightgray;
+}
+
+.notification {
+  height: 80px;
+  border-bottom: 1px solid lightgray;
+}
+
+.notification:last-child {
+  border-bottom: none;
 }
