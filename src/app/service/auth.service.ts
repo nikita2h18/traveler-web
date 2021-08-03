@@ -16,4 +16,13 @@ export class AuthService {
   auth(userCredentials: UserCredentials): Observable<{ token: string, userId: string }> {
     return this.http.post<{ token: string, userId: string }>(API_URL + 'auth/login', userCredentials);
   }
+
+  isLoggedIn() {
+    const token = localStorage.getItem('token') as string;
+    const payload = atob(token.split('.')[1]);
+    const parsedPayload = JSON.parse(payload);
+
+    return parsedPayload.exp > Date.now() / 1000;
+
+  }
 }

@@ -8,6 +8,7 @@ import {TravelViewComponent} from "./module/travel/travel-view/travel-view.compo
 import {TravelListComponent} from "./module/travel/travel-list/travel-list.component";
 import {TravelCreateComponent} from "./module/travel/travel-create/travel-create.component";
 import {ProfileViewComponent} from "./component/profile-view/profile-view.component";
+import {AuthGuard} from "./guard/auth.guard";
 
 const authRoutes = [
   {
@@ -24,18 +25,22 @@ const mainRouts = [
   {
     path: 'travel/view/:id',
     component: TravelViewComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'travel/create',
     component: TravelCreateComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'travels',
     component: TravelListComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'profile/view/:id',
     component: ProfileViewComponent,
+    canActivate: [AuthGuard]
   }
 ]
 
@@ -48,7 +53,8 @@ const routes: Routes = [
   {
     path: 'main',
     component: MainComponent,
-    children: mainRouts
+    children: mainRouts,
+    canActivate: [AuthGuard]
   },
   {
     path: 'preview',
