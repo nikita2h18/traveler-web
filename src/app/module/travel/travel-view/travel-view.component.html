@@ -1,7 +1,7 @@
 <p-card [header]="travel.pointFrom + ' >> ' + travel.pointTo" [style]="style" styleClass="p-card-shadow">
   <ng-template pTemplate="header">
     <app-card-user [travelId]="travelId"></app-card-user>
-    <img alt="Card" src="../../../../assets/0-tunis.jpg" height="400"/></ng-template>
+    <img alt="Card" [src]="travel.image" height="400"/></ng-template>
   <p [innerHTML]="travel.description"></p>
   <ng-template pTemplate="footer">
     <div class="card__icons">

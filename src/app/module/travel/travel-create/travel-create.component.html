@@ -1,27 +1,29 @@
-<form class="form">
+<form class="form" [formGroup]="form">
   <div class="p-fluid p-formgrid p-grid">
     <div class="p-field p-col-12 form__item">
       <label>Description</label>
-      <p-editor [(ngModel)]="travel.description"
-                [ngModelOptions]="{standalone: true}"
+      <p-editor formControlName="description"
                 [style]="{'height':'320px'}"></p-editor>
     </div>
     <div class="p-field p-col-12 p-md-6 form__item">
       <label for="pointFrom">From</label>
       <input id="pointFrom"
              type="text"
-             [(ngModel)]="travel.pointFrom"
-             [ngModelOptions]="{standalone: true}"
+             formControlName="pointFrom"
              pInputText>
     </div>
     <div class="p-field p-col-12 p-md-6 form__item">
       <label for="pointTo">To</label>
       <input id="pointTo"
              type="text"
-             [(ngModel)]="travel.pointTo"
-             [ngModelOptions]="{standalone: true}"
+             formControlName="pointTo"
              pInputText>
     </div>
+    <input
+      style="display: none"
+      type="file" (change)="onFileChanged($event)"
+      #fileInput>
+    <button (click)="fileInput.click()">Select File</button>
     <p-button class="form__item" label="Create" (click)="addTravel()"></p-button>
   </div>
 </form>

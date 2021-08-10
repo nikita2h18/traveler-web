@@ -5,7 +5,7 @@
     <p-card [header]="travel.pointTo" [style]="style" styleClass="p-card-shadow">
       <ng-template pTemplate="header">
         <app-card-user [travelId]="travel.id"></app-card-user>
-        <img alt="Card" src="../../../../assets/0-tunis.jpg" height="220"/></ng-template>
+        <img alt="Card" [src]="travel.image" height="220"/></ng-template>
       <div [innerHTML]="travel.description"></div>
     </p-card>
   </div>

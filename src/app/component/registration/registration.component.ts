@@ -41,6 +41,7 @@ export class RegistrationComponent implements OnInit {
       return;
     }
     if (this.form.invalid) {
+      this.showError();
       return;
     }
     const userCredentials = new UserCredentials(

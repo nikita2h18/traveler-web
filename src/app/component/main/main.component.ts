@@ -27,7 +27,6 @@ export class MainComponent implements OnInit {
     this.notifyService.getNotification().subscribe(
       notifications => {
         this.isNotified = !!notifications.length;
-        console.log(notifications)
         notifications.forEach(
           notification => this.userService.getById(notification.subscribeId).subscribe(
             user => this.users.push(user)

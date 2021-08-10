@@ -1,11 +1,9 @@
-export class Travel {
+export class TravelCreate {
   constructor(
-    public id: number,
     public description: string,
     public pointFrom: string,
     public pointTo: string,
-    public image: string,
-    public userId: number,
+    public image: any,
   ){
   }
 }

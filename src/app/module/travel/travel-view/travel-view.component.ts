@@ -10,7 +10,7 @@ import {LikeService} from "../../../service/like.service";
   styleUrls: ['./travel-view.component.scss']
 })
 export class TravelViewComponent implements OnInit {
-  @Input() public travel: Travel = new Travel(1, '', '', '', 0);
+  @Input() public travel: Travel = new Travel(1, '', '', '', '', 0);
   public style = {
     width: '660px',
     minHeight: '465px',
@@ -66,6 +66,7 @@ export class TravelViewComponent implements OnInit {
         travel.description,
         travel.pointFrom,
         travel.pointTo,
+        travel.image,
         travel.userId
       )
     });
