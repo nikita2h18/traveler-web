@@ -10,7 +10,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {RegistrationComponent} from "./component/registration/registration.component";
 import {InputTextModule} from "primeng/inputtext";
 import {ButtonModule} from 'primeng/button';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthComponent} from './component/auth/auth.component';
 import {NgxsReduxDevtoolsPluginModule} from "@ngxs/devtools-plugin";
 import {NgxsLoggerPluginModule} from "@ngxs/logger-plugin";
@@ -35,6 +35,8 @@ import {SocketIoModule, SocketIoConfig} from 'ngx-socket-io';
 import { ChatComponent } from './component/chat/chat.component';
 import { NotificationComponent } from './component/notification/notification.component';
 import {FileUploadModule} from 'primeng/fileupload';
+import {LoaderInterceptor} from "./interceptors/loader.interceptor";
+import { LoaderDirective } from './directive/loader.directive';
 
 const config: SocketIoConfig = {url: 'http://localhost:3000', options: {}};
 
@@ -54,6 +56,7 @@ const config: SocketIoConfig = {url: 'http://localhost:3000', options: {}};
     UsersListComponent,
     ChatComponent,
     NotificationComponent,
+    LoaderDirective,
   ],
   imports: [
     BrowserModule,
@@ -79,7 +82,14 @@ const config: SocketIoConfig = {url: 'http://localhost:3000', options: {}};
     SocketIoModule.forRoot(config),
     FileUploadModule
   ],
-  providers: [MessageService],
+  providers: [
+    MessageService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
+      multi: true
+    }
+  ],
   exports: [],
   bootstrap: [AppComponent]
 })
