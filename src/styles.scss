@@ -1,3 +1,4 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
 @import "~primeng/resources/themes/saga-blue/theme.css";
 @import "~primeng/resources/primeng.min.css";
 @import "~primeicons/primeicons.css";
@@ -7,6 +8,10 @@
 @font-face {
   font-family: FjallaOne-Regular;
   src: local(FjallaOne-Regular), url("assets/fonts/FjallaOne-Regular.ttf") format("truetype");
+}
+
+*, ::after, ::before {
+  box-sizing: unset;
 }
 
 body {

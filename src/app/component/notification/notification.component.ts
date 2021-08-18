@@ -6,12 +6,6 @@ import {User} from "../../dto/User";
   templateUrl: './notification.component.html',
   styleUrls: ['./notification.component.scss']
 })
-export class NotificationComponent implements OnInit {
+export class NotificationComponent {
   @Input() users: User[] = []
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }

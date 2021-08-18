@@ -37,6 +37,7 @@ import { NotificationComponent } from './component/notification/notification.com
 import {FileUploadModule} from 'primeng/fileupload';
 import {LoaderInterceptor} from "./interceptors/loader.interceptor";
 import { LoaderDirective } from './directive/loader.directive';
+import {NgxSpinnerModule} from "ngx-spinner";
 
 const config: SocketIoConfig = {url: 'http://localhost:3000', options: {}};
 
@@ -80,7 +81,8 @@ const config: SocketIoConfig = {url: 'http://localhost:3000', options: {}};
     CardModule,
     RippleModule,
     SocketIoModule.forRoot(config),
-    FileUploadModule
+    FileUploadModule,
+    NgxSpinnerModule
   ],
   providers: [
     MessageService,

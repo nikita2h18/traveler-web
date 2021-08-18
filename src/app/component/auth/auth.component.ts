@@ -46,9 +46,12 @@ export class AuthComponent implements OnInit {
       this.form.controls.password.value
     )
 
+    this.auth(userCredentials);
+  }
+
+  auth(userCredentials: UserCredentials) {
     this.authService.auth(userCredentials).subscribe(
       token => {
-        console.log(token)
         this.meProviderService.setToken(token);
         this.meProviderService.setUserId(token);
         this.router.navigateByUrl('/main/travels');

@@ -32,3 +32,6 @@
   font-size: 25px;
   margin-right: 10px;
 }
+*, ::after, ::before {
+  box-sizing: unset;
+}

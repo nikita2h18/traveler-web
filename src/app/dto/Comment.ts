@@ -3,7 +3,7 @@ export class Comment {
     public id: number,
     public message: string,
     public travelId: string,
-    public userId: number
+    public userid: number
   ) {
   }
 }

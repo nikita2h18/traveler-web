@@ -1,13 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import {TravelService} from "../../../service/travel.service";
-import {Travel} from "../../../dto/Travel";
 import {Router} from "@angular/router";
-import {MessageService} from "primeng/api";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {UserCredentials} from "../../../dto/UserCredentials";
 import {TravelCreate} from "../../../dto/TravelCreate";
-import {loggerOptionsFactory} from "@ngxs/logger-plugin/src/logger.module";
 import {switchMap} from "rxjs/operators";
+import {LoaderDirective} from "../../../directive/loader.directive";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-travel-create',
@@ -15,6 +13,8 @@ import {switchMap} from "rxjs/operators";
   styleUrls: ['./travel-create.component.scss']
 })
 export class TravelCreateComponent implements OnInit {
+  @ViewChild('appLoader', {static: true, read: ViewContainerRef}) loader!: LoaderDirective;
+
   public form!: FormGroup;
   public image!: File;
 
@@ -22,7 +22,7 @@ export class TravelCreateComponent implements OnInit {
     private formBuilder: FormBuilder,
     private travelService: TravelService,
     private router: Router,
-    private messageService: MessageService
+    private spinnerService: NgxSpinnerService,
   ) {
   }
 
@@ -35,6 +35,7 @@ export class TravelCreateComponent implements OnInit {
   }
 
   addTravel() {
+    this.spinnerService.show();
     this.travelService.upload(this.image).pipe(
       switchMap(imageUrl => {
         const travel = new TravelCreate(
@@ -46,7 +47,10 @@ export class TravelCreateComponent implements OnInit {
         return this.travelService.addTravel(travel)
       })
     ).subscribe(
-      () => this.router.navigateByUrl('main/travels')
+      () => {
+        this.spinnerService.hide();
+        this.router.navigateByUrl('main/travels')
+      }
     )
 
   }

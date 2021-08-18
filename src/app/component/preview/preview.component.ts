@@ -6,5 +6,4 @@ import {Component} from '@angular/core';
   styleUrls: ['./preview.component.scss']
 })
 export class PreviewComponent {
-
 }

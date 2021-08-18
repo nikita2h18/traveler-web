@@ -12,6 +12,7 @@ import {EditorModule} from "primeng/editor";
 import {CommentsComponent} from "../../component/comments/comments.component";
 import {RippleModule} from "primeng/ripple";
 import {FileUploadModule} from "primeng/fileupload";
+import {NgxSpinnerModule} from "ngx-spinner";
 
 
 
@@ -38,6 +39,7 @@ import {FileUploadModule} from "primeng/fileupload";
         RippleModule,
         FileUploadModule,
         ReactiveFormsModule,
+        NgxSpinnerModule,
     ]
 })
 export class TravelModule { }

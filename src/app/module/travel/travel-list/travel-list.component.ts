@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {Travel} from "../../../dto/Travel";
 import {Router} from "@angular/router";
 import {TravelService} from "../../../service/travel.service";
@@ -7,7 +7,8 @@ import {Subscription} from "rxjs";
 @Component({
   selector: 'app-travel-list',
   templateUrl: './travel-list.component.html',
-  styleUrls: ['./travel-list.component.scss']
+  styleUrls: ['./travel-list.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class TravelListComponent implements OnInit, OnDestroy {
   public travels: Travel[] = [];

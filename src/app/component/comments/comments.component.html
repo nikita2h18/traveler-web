@@ -1,6 +1,7 @@
 <div *ngIf="comments" class="comments-container">
   <p>Comments: </p>
   <div *ngFor="let comment of comments" class="comment">
+    <div>{{findUserByComment(comment.userid).login}}</div>
     <p>{{comment.message}}</p>
   </div>
 </div>

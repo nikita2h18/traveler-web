@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
 import {Comment} from "../../dto/Comment";
 import {CommentService} from "../../service/comment.service";
 import {Subscription} from "rxjs";
@@ -11,7 +11,7 @@ import {switchMap} from "rxjs/operators";
 @Component({
   selector: 'app-comments',
   templateUrl: './comments.component.html',
-  styleUrls: ['./comments.component.scss']
+  styleUrls: ['./comments.component.scss'],
 })
 export class CommentsComponent implements OnInit, OnDestroy {
   public comments: Comment[] = [];
@@ -31,20 +31,27 @@ export class CommentsComponent implements OnInit, OnDestroy {
     this.subscription = this.route.params.pipe(
       switchMap(params => {
         this.writeComment = new WriteComment('', params['id']);
-        this.getUser(Number(params['id']));
+        this.getUser(localStorage.getItem('userId') as string);
         return this.commentService.getByTravel(params['id']);
       })
     ).subscribe(
-        comments => {
-          this.comments = comments
-        }
-      )
+      comments => {
+        console.log(comments)
+        this.comments = comments
+      }
+    )
   }
 
-  getUser(id: number) {
-    this.userService.getById(id).subscribe(user => {
+  findUserByComment(commentUserId: number) {
+    return this.users.filter(user => user.id === commentUserId)[0];
+  }
+
+  getUser(id: string) {
+    this.userService.getById(Number(id)).subscribe(user => {
       this.users.push(user);
       this.user = user;
+      console.log(this.users);
+      console.log(this.user);
     });
   }
 
