@@ -33,4 +33,12 @@ export class NotificationService {
       }
     })
   }
+
+  seen(notifications: Notification[]) {
+    return this.http.put(API_URL + 'notification', notifications, {
+      headers: {
+        token : localStorage.getItem('token') as string
+      }
+    })
+  }
 }

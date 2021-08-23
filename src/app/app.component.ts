@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, OnInit, Renderer2} from '@angular/core';
 import {PrimeNGConfig} from "primeng/api";
 import {LoaderService} from "./service/loader.service";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,8 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   constructor(private primengConfig: PrimeNGConfig,
               private loaderService: LoaderService,
-              private renderer: Renderer2) {
+              private renderer: Renderer2,
+              private spinnerService: NgxSpinnerService) {
   }
 
   ngOnInit() {
@@ -22,8 +24,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.loaderService.httpProgress().subscribe((status: boolean) => {
       status ?
-        this.renderer['addClass'](document.body, 'cursor-loader') :
-        this.renderer['removeClass'](document.body, 'cursor-loader')
+        this.spinnerService.show() :
+        this.spinnerService.hide();
     });
   }
 }

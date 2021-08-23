@@ -4,6 +4,7 @@ import {NotificationService} from "../../service/notification.service";
 import {UserService} from "../../service/user.service";
 import {switchMap} from "rxjs/operators";
 import {User} from "../../dto/User";
+import {Notification} from "../../dto/Notification";
 
 @Component({
   selector: 'app-main',
@@ -16,6 +17,7 @@ export class MainComponent implements OnInit {
   public items!: MenuItem[];
   public isNotified = false;
   public users: User[] = [];
+  public notifications: Notification[] = [];
 
   constructor(
     private notifyService: NotificationService,
@@ -26,6 +28,7 @@ export class MainComponent implements OnInit {
   ngOnInit() {
     this.notifyService.getNotification().subscribe(
       notifications => {
+        this.notifications.push(...notifications);
         this.isNotified = !!notifications.length;
         notifications.forEach(
           notification => this.userService.getById(notification.subscribeId).subscribe(

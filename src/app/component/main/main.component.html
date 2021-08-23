@@ -9,7 +9,7 @@
   </div>
   <div class="components__right">
     <div *ngIf="isBellClicked">
-      <app-notification [users]="users"></app-notification>
+      <app-notification [users]="users" [notifications]="notifications"></app-notification>
     </div>
     <app-user></app-user>
     <app-subscribers-list></app-subscribers-list>
